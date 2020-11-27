@@ -29,13 +29,14 @@ void BFSD(int s , int n)
 			}
 		}
 	}
-	printf("\nРасстояние: ");
+	printf("\n\t\tРасстояние: ");
 	for(int i = 0; i < n; i++)
 	{
 		if(dist[i] != -1)
 		{
 			printf("%d\t", dist[i]);
 		}
+		dist[i] = -1;
 	}
 
 }
@@ -44,14 +45,11 @@ int _tmain(int argc, _TCHAR* argv[])
 {
   system("chcp 1251");
   system("cls");
-  int n,i,j,x, Nach;
+  int n,i,j, Nach;
   
   printf("Введите размер матририцы: ");
   scanf("%d", &n);
-  printf("Введите размер вектора расстояния: ");
-  scanf("%d", &x);
-  printf("Введите начальную точку обхода:\n");
-  scanf("%d", &Nach);
+ 
   
   dist = (int*)malloc(n * sizeof(int));
   
@@ -78,7 +76,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
   }
-  for(i = 0; i < x; i++)
+  for(i = 0; i < n; i++)
   {
 	dist[i] = -1;
   }
@@ -94,19 +92,26 @@ int _tmain(int argc, _TCHAR* argv[])
   }
   printf( " \n   ");
   printf( " \n   ");
-  for(int i = 0; i < x; i++)
+  for(int i = 0; i < n; i++)
   {
 	printf("%d\t", dist[i]);
   }
   printf( " \n   ");
 
+  for(int i = 0; i < n ; i++)
+  {
+	  BFSD(i, n);
+	  printf("\n");
+  }
   
-  BFSD(Nach, n);
 
 
   
     getch();
 }
+
+
+
 
 
 
